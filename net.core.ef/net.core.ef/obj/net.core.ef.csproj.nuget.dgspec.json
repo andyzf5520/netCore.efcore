@@ -1,0 +1,75 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\工作\\C#\\NetCore-ef\\net.core.ef\\net.core.ef\\net.core.ef\\net.core.ef.csproj": {}
+  },
+  "projects": {
+    "D:\\工作\\C#\\NetCore-ef\\net.core.ef\\net.core.ef\\net.core.ef\\net.core.ef.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\工作\\C#\\NetCore-ef\\net.core.ef\\net.core.ef\\net.core.ef\\net.core.ef.csproj",
+        "projectName": "net.core.ef",
+        "projectPath": "D:\\工作\\C#\\NetCore-ef\\net.core.ef\\net.core.ef\\net.core.ef\\net.core.ef.csproj",
+        "packagesPath": "C:\\Users\\bx017\\.nuget\\packages\\",
+        "outputPath": "D:\\工作\\C#\\NetCore-ef\\net.core.ef\\net.core.ef\\net.core.ef\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\bx017\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.AspNetCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.AspNetCore.Razor.Design": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "(, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}
