@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.271
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore-CodeFirst", "EFCore-CodeFirst\EFCore-CodeFirst.csproj", "{83D4D5D7-18A6-49C8-80A2-0BE7CEFD10AF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVC.EFCore", "MVC.EFCore\MVC.EFCore.csproj", "{45F010E3-019D-473A-9859-31439910A569}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{83D4D5D7-18A6-49C8-80A2-0BE7CEFD10AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83D4D5D7-18A6-49C8-80A2-0BE7CEFD10AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83D4D5D7-18A6-49C8-80A2-0BE7CEFD10AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83D4D5D7-18A6-49C8-80A2-0BE7CEFD10AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45F010E3-019D-473A-9859-31439910A569}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45F010E3-019D-473A-9859-31439910A569}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45F010E3-019D-473A-9859-31439910A569}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45F010E3-019D-473A-9859-31439910A569}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {898CD129-B804-49DF-8CDA-7F5752D610D5}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://andyzf.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = EFCore-CodeFirst\\EFCore-CodeFirst.csproj
+		SccProjectName1 = EFCore-CodeFirst
+		SccLocalPath1 = EFCore-CodeFirst
+		SccProjectUniqueName2 = MVC.EFCore\\MVC.EFCore.csproj
+		SccProjectName2 = MVC.EFCore
+		SccLocalPath2 = MVC.EFCore
+	EndGlobalSection
+EndGlobal

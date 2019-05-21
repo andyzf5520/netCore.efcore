@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model List<Blog>
+<h1>@ViewBag.name</h1>
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+    <p>
+        参考地址：https://www.cnblogs.com/stulzq/p/7717873.html
+       创建名称不同的多个DBContext时候需要添加如下参数 cmd 命令行执行dotnet ef migrations add Initial -c DemoDbContext<br />
+
+    </p>
+    <p>@Html.ActionLink(" 新增 ", "index", "Create");    @Html.ActionLink("  跳转Books列表", "index", "Books");</p>
+
+
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Url</th>
+           
+        </tr>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@Html.DisplayFor(id => item.BlogId)</td>
+            <td>@Html.DisplayFor(mode => item.Url)</td>
+          
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+        }
+
+
+    </table>
+    <b>
+        新建一个APS.NET CORE WEB模板项目
+        安装相关Nuget包
+        //Sql Server Database Provider
+        Install-Package Microsoft.EntityFrameworkCore.SqlServer
+
+        //提供熟悉的Add-Migration，Update-Database等Powershell命令，不区分关系型数据库类型
+        Install-Package Microsoft.EntityFrameworkCore.Tools
+        Tools工具用来使 options.UseSqlServer 可以使用的作用
+        // 新增配置信息Constr
+
+        创建数据库
+        工具 - > NuGet软件包管理器 - >软件包管理器控制台
+        //创建模型的初始表
+        Add-Migration InitialCreate 或者InitialDB 创建新数据库 必须切换到当前项目目录下执行
+        //将新迁移应用于数据库
+        Update-Database  为任何待定的模型更改 搭建迁移脚本。也就是SQL 创建或者更新对应表到数据库（空表）
+    </b>
+    <input type="range" name="points" min="1" max="1000" value="12121" />
+</div>
