@@ -1,4 +1,4 @@
-.DS_Store
+ï»¿.DS_Store
 
 # Editor directories and files
 .idea
@@ -7,7 +7,9 @@
 *.ntvs*
 *.njsproj
 *.sln
-#ºöÂÔbinÎÄ¼ş¼Ğ
+#ï¿½ï¿½ï¿½ï¿½binï¿½Ä¼ï¿½ï¿½ï¿½
 bin/
-#ºöÂÔobjÎÄ¼ş¼Ğ
+#ï¿½ï¿½ï¿½ï¿½objï¿½Ä¼ï¿½ï¿½ï¿½
 obj/
+vs/
+EF-Core/.vs
