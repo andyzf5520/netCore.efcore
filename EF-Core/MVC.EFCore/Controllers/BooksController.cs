@@ -65,24 +65,31 @@ namespace MVC.EFCore.Controllers
                 });
             }
             ViewBag.Names = listItems;
+           
             return View();
         }
         [HttpPost]
         public IActionResult Create(Book book)
         {
             int id = book.AutherID==0?1:book.AutherID;
-            if (book != null)
-                book.AutherID = id;
+            if (book != null) {
+                //book.AutherID = id; // 不需要添加
                 myDBContext.Add(book);
-            myDBContext.SaveChanges();
+                myDBContext.SaveChanges();
+                //return RedirectToAction(nameof(Index));
+            }
+          
+
 
       
             return  Redirect("Index");
         }
         [HttpPost]
-        public IActionResult Delete(int id) {
+        public IActionResult Delete(int? id) {
 
-           var book= myDBContext.Books.Find(id);
+            
+
+            var book = myDBContext.Books.Find(id);
             if (book != null)
             {
                 myDBContext.Books.Remove(book);
@@ -93,6 +100,7 @@ namespace MVC.EFCore.Controllers
         }
         public IActionResult Delete()
         {
+
             return View();
         }
         public IActionResult Details(int id)
@@ -123,17 +131,17 @@ namespace MVC.EFCore.Controllers
           
             if (ModelState.IsValid)
             {
-                Book data = myDBContext.Books .SingleOrDefault(e => e.BookID == book.BookID);
-                myDBContext.Entry(book).Property(p => p.Name).IsModified = true;//告诉EF Core实体person的Name属性已经更改。将testDBContext.Entry(person).Property(p => p.Name).IsModified设置为true后，也会将person实体的State值（可以通过testDBContext.Entry(person).State查看到）更改为EntityState.Modified，这样就保证了下面SaveChanges的时候会将person实体的Name属性值Update到数据库中。
-                myDBContext.Entry(book).Property(p => p.Content).IsModified = true;
-                myDBContext.Entry(book).Property(p => p.AutherID).IsModified = true;
-                myDBContext.Entry(book).Property(p => p.DateTime).IsModified = true;
-                myDBContext.Books.Update(data);// 跟明源云一样必须改状态
+                //Book data = myDBContext.Books .SingleOrDefault(e => e.BookID == book.BookID);
+                //myDBContext.Entry(book).Property(p => p.Name).IsModified = true;//告诉EF Core实体person的Name属性已经更改。将testDBContext.Entry(person).Property(p => p.Name).IsModified设置为true后，也会将person实体的State值（可以通过testDBContext.Entry(person).State查看到）更改为EntityState.Modified，这样就保证了下面SaveChanges的时候会将person实体的Name属性值Update到数据库中。
+                //myDBContext.Entry(book).Property(p => p.Content).IsModified = true;
+                //myDBContext.Entry(book).Property(p => p.AutherID).IsModified = true;
+                //myDBContext.Entry(book).Property(p => p.DateTime).IsModified = true;
+                myDBContext.Books.Update(book);// 跟明源云一样必须改状态
                
 
 
                 myDBContext.SaveChanges();//Linq to sql  数据上下文中的保存删除新增修改都是一个方法SubnitChanges()
-
+                return RedirectToAction(nameof(Index));// 返回控制器名
             }
             myDBContext.SaveChanges();
             return View();

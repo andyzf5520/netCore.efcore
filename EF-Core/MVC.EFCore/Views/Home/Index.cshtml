@@ -52,6 +52,12 @@
         Add-Migration InitialCreate 或者InitialDB 创建新数据库 必须切换到当前项目目录下执行
         //将新迁移应用于数据库
         Update-Database  为任何待定的模型更改 搭建迁移脚本。也就是SQL 创建或者更新对应表到数据库（空表）
+       
     </b>
+    <p>
+        Add-Migration 命令生成用于创建初始数据库架构的代码。
+        Update-Database 命令在用于创建数据库的 Migrations/{time-stamp}_InitialCreate.cs 文件中运行 Up 方法。
+        UP  Down  Build 方法三个
+    </p>
     <input type="range" name="points" min="1" max="1000" value="12121" />
 </div>

@@ -27,32 +27,39 @@
             <th>
                 @Html.DisplayNameFor(model => model.Content)
             </th>
-            <th></th>
+            <th>普通Html.ActionLink('action','标签名',参数)</th>
+            <th>使用 a 标签属性asp-controller='',asp-action='delete'  asp-route-id=" item.Id" </th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in (ViewBag.Data as List<Book>))
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BookID)
-                </td>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookID)
+            </td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateTime)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Content)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new {  id=item.BookID }) |
-                    @Html.ActionLink("Details", "Details", new { id=item.BookID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.BookID })
-                </td>
-            </tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.BookID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.BookID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.BookID })
+            </td>
+       
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BookID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.BookID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.BookID">Delete</a>
+            </td>
+        </tr>
         }
 
         @*@foreach (var item in Model)
