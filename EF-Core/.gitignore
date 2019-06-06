@@ -8,7 +8,8 @@
 *.njsproj
 *.sln
 #忽略bin文件夹
-* bin/
+ bin/
 #忽略obj文件夹
-* obj/
+obj/
 EF-Core\MVC.EFCore\bin\
+

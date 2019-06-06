@@ -13,7 +13,7 @@
             
            </center>
 
-+ 方式二 : COde-First
++ 方式二   : COde-First
         新建一个APS.NET CORE WEB模板项目
         安装相关Nuget包
         //Sql Server Database Provider
