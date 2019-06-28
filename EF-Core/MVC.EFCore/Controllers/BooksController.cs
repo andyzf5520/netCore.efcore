@@ -72,6 +72,7 @@ namespace MVC.EFCore.Controllers
         public IActionResult Create(Book book)
         {
             int id = book.AutherID==0?1:book.AutherID;
+			 book.AutherID = id;
             if (book != null) {
                 //book.AutherID = id; // 不需要添加
                 myDBContext.Add(book);

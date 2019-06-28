@@ -13,3 +13,4 @@ bin/
 obj/
 vs/
 EF-Core/.vs
+netcore.mysql/netcore/bin
