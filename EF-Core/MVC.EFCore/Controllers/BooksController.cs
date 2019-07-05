@@ -44,6 +44,21 @@ namespace MVC.EFCore.Controllers
 
 
             //myDBContext.SaveChanges();
+           var modelDto= myDBContext.Books.Join(
+                                myDBContext.Authers,
+                                e1 => e1.AutherID,
+                                e2 => e2.AutherID,
+                                (e1, e2) => new
+                                {
+                                    e1,
+                                    e2
+                                }
+                                ).Select(s => new
+                                {
+                                     s.e1.BookID,
+                                     s.e1.Content,
+                                     AuthorName = s.e2.Name,
+                                }).ToList();
             ViewBag.Message = "OK!";
             var list = myDBContext.Books;
             ViewBag.Data = list.ToList();
@@ -65,30 +80,32 @@ namespace MVC.EFCore.Controllers
                 });
             }
             ViewBag.Names = listItems;
-           
+
             return View();
         }
         [HttpPost]
         public IActionResult Create(Book book)
         {
-            int id = book.AutherID==0?1:book.AutherID;
-			 book.AutherID = id;
-            if (book != null) {
+            int id = book.AutherID == 0 ? 1 : book.AutherID;
+            book.AutherID = id;
+            if (book != null)
+            {
                 //book.AutherID = id; // 不需要添加
                 myDBContext.Add(book);
                 myDBContext.SaveChanges();
                 //return RedirectToAction(nameof(Index));
             }
-          
 
 
-      
-            return  Redirect("Index");
+
+
+            return Redirect("Index");
         }
         [HttpPost]
-        public IActionResult Delete(int? id) {
+        public IActionResult Delete(int? id)
+        {
 
-            
+
 
             var book = myDBContext.Books.Find(id);
             if (book != null)
@@ -106,20 +123,20 @@ namespace MVC.EFCore.Controllers
         }
         public IActionResult Details(int id)
         {
-            var data=myDBContext.Books.Find(id);
+            var data = myDBContext.Books.Find(id);
             return View(data);
 
         }
         public IActionResult Edit(int? id)
         {
             var data = myDBContext.Books.Find(id);
-            if(data==null)
+            if (data == null)
                 return NotFound();
 
             return View(data);
         }
 
-      
+
         [HttpPost]
 
         public ActionResult Edit(Book book)
@@ -129,7 +146,7 @@ namespace MVC.EFCore.Controllers
             {
                 return new BadRequestResult();
             }
-          
+
             if (ModelState.IsValid)
             {
                 //Book data = myDBContext.Books .SingleOrDefault(e => e.BookID == book.BookID);
@@ -138,7 +155,7 @@ namespace MVC.EFCore.Controllers
                 //myDBContext.Entry(book).Property(p => p.AutherID).IsModified = true;
                 //myDBContext.Entry(book).Property(p => p.DateTime).IsModified = true;
                 myDBContext.Books.Update(book);// 跟明源云一样必须改状态
-               
+
 
 
                 myDBContext.SaveChanges();//Linq to sql  数据上下文中的保存删除新增修改都是一个方法SubnitChanges()
