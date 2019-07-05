@@ -59,6 +59,19 @@ namespace MVC.EFCore.Controllers
                                      s.e1.Content,
                                      AuthorName = s.e2.Name,
                                 }).ToList();
+            var modelDto2 = from a in myDBContext.Books
+                            join b in myDBContext.Authers
+                            on a.AutherID equals b.AutherID
+                            select new
+                            {
+                                a.BookID,
+                                a.Content,
+                                a.Name,
+                                AuthorName = b.Name
+                            } into c
+                            group c by new { c.AuthorName } into d  //按照作家分组
+                            select d;
+
             ViewBag.Message = "OK!";
             var list = myDBContext.Books;
             ViewBag.Data = list.ToList();
