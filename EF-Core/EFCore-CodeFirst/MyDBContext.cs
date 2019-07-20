@@ -42,7 +42,8 @@ namespace EFCore_CodeFirst
         //重写OnModelCreating方法，配置创建model的约束条件(前提是使用Add-Migration InitialCreate Update-Database )
 
         //注意： 此添加的必须的非常重要:  Add-Migration InitialCreate 
-        //将新迁移应用于数据库  Update-Database
+        //将新迁移应用于数据库  Update-Database  
+        // 一个解决方案下有多个的项目的话添加 就得单独添加迁移 Add-Migration -context BooksDBContext initializeUpdate-Database -context BooksDBContext 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

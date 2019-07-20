@@ -43,7 +43,7 @@ namespace MVC.EFCore
         工具 - > NuGet软件包管理器 - >软件包管理器控制台 
         //创建模型的初始表 
         Add-Migration InitialCreate 或者InitialDB 创建新数据库 必须切换到当前项目目录下执行 
-        Add-Migration InitialCreate -c  DemoDbContext
+        Add-Migration InitialCreate -c  DemoDbContext  或者使用Update-Database -context BooksDBContext   Add-Migration -context BooksDBContext initialize
         //将新迁移应用于数据库 
         Update-Database  为任何待定的模型更改 搭建迁移脚本。也就是SQL 创建或者更新对应表到数据库（空表） 
         Update-Database -c DemoDbContext 执行多个上下文对象使用

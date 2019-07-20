@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using MVC.EFCore.Models;
 
 namespace MVC.EFCore.Controllers
@@ -26,25 +27,31 @@ namespace MVC.EFCore.Controllers
         }
         public IActionResult Index()
         {
-            //myDBContext.Add(new Book()
-            //{
+            if (myDBContext.Authers.Count() == 0)
+            {
+                myDBContext.Add(new Book()
+                {
 
-            //    Name = "三国演义",
-            //    Content = "三国",
-            //    AutherID = 2,
-            //    DateTime = DateTime.Now
-            //});
-            //myDBContext.Add(new Auther()
-            //{
+                    Name = "三国演义",
+                    Content = "三国",
+                    AutherID = 2,
+                    DateTime = DateTime.Now
+                });
 
-            //    //AutherID = 1,
-            //    Name = "齐白石"
+                myDBContext.Add(new Auther()
+                {
 
-            //});
+                    //AutherID = 1,
+                    Name = "齐白石"
+
+                });
+            }
+          
+         
 
 
             //myDBContext.SaveChanges();
-           var modelDto= myDBContext.Books.Join(
+            var modelDto= myDBContext.Books.Join(
                                 myDBContext.Authers,
                                 e1 => e1.AutherID,
                                 e2 => e2.AutherID,
@@ -73,7 +80,7 @@ namespace MVC.EFCore.Controllers
                             select d;
 
             ViewBag.Message = "OK!";
-            var list = myDBContext.Books;
+            var list = myDBContext.Books.AsNoTracking(); //只进行查询
             ViewBag.Data = list.ToList();
             return View(list);
         }
@@ -162,12 +169,23 @@ namespace MVC.EFCore.Controllers
 
             if (ModelState.IsValid)
             {
+                //var books=  myDBContext.Set<Book>().AsNoTracking();      //修改不能这么使用       
+                //var books = myDBContext.Books.AsNoTracking(); //这样也不行
+                //第一种修改方法
+                //var books = myDBContext.Books.First(e => e.BookID == book.BookID);
+                //books.Content = book.Content.Trim(); //这种虽然赋值给了books 变量 但是会追踪books变量变化 最后保存的也是修改的
+                //                              //使用下面的Update(book);也可以直接修改
+
+                #region 不推荐方法
                 //Book data = myDBContext.Books .SingleOrDefault(e => e.BookID == book.BookID);
                 //myDBContext.Entry(book).Property(p => p.Name).IsModified = true;//告诉EF Core实体person的Name属性已经更改。将testDBContext.Entry(person).Property(p => p.Name).IsModified设置为true后，也会将person实体的State值（可以通过testDBContext.Entry(person).State查看到）更改为EntityState.Modified，这样就保证了下面SaveChanges的时候会将person实体的Name属性值Update到数据库中。
                 //myDBContext.Entry(book).Property(p => p.Content).IsModified = true;
                 //myDBContext.Entry(book).Property(p => p.AutherID).IsModified = true;
-                //myDBContext.Entry(book).Property(p => p.DateTime).IsModified = true;
+                //myDBContext.Entry(book).Property(p => p.DateTime).IsModified = true; 
+                #endregion
+                // 第三种方法 直接接收后修改
                 myDBContext.Books.Update(book);// 跟明源云一样必须改状态
+
 
 
 
