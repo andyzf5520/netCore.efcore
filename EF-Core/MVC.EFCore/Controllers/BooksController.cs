@@ -112,6 +112,7 @@ namespace MVC.EFCore.Controllers
             {
                 //book.AutherID = id; // 不需要添加
                 myDBContext.Add(book);
+                //myDBContext.Books.Add(book);// 建议一般这样写 比较具体不用推断类型
                 myDBContext.SaveChanges();
                 //return RedirectToAction(nameof(Index));
             }
